@@ -8,7 +8,7 @@ def limpa_string(string : str) -> str:
 
 def sao_anagramas(string1 : str, string2 : str) -> bool:
     if not isinstance(string1, str) or not isinstance(string2, str):
-        return False
+        raise Exception("Insert two strings as arguments")
     
     # Passar todos os maiúsculos para minúsculos
     nova_string1 = limpa_string(string1)
