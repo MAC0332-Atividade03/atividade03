@@ -1,22 +1,24 @@
+def limpa_string(string : str) -> str:
+    # Transforma todos os caractere em minúsculos
+    # Splita a string
+    lista_de_termos = string.lower().split()
+
+    # Reune as peças, retirando os espaços entre os termos
+    return "".join(map(str.strip, lista_de_termos))
+
 def sao_anagramas(string1 : str, string2 : str) -> bool:
     # Passar todos os maiúsculos para minúsculos
-    string1 = string1.lower().strip()
-    string2 = string2.lower().strip()
-
-    string1 = string1.split()
-    string2 = string2.split()
-
-    string1 = "".join(s.strip() for s in string1)
-    string2 = "".join(s.strip() for s in string2)
+    nova_string1 = limpa_string(string1)
+    nova_string2 = limpa_string(string2)
 
     # Definir variáveis auxiliares
-    size1 = len(string1)
-    size2 = len(string2)
+    size1 = len(nova_string1)
+    size2 = len(nova_string2)
     mapeador = {}
 
-    # Observar na tabela ASCII que os caracteres válidos estão entre 33 e 126, inclusos
+    # Contabilizar cada caractere da string limpa
     for i in range(size1):
-        char_ascii = string1[i]
+        char_ascii = nova_string1[i]
         if char_ascii not in mapeador:
             mapeador[char_ascii] = 1
         else:
@@ -24,7 +26,7 @@ def sao_anagramas(string1 : str, string2 : str) -> bool:
     
     # Para todo caractere lido, reduz um da contagem
     for i in range(size2):
-        char_ascii = string2[i]
+        char_ascii = nova_string2[i]
         if char_ascii not in mapeador:
             mapeador[char_ascii] = -1
         else:
