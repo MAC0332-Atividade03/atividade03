@@ -16,7 +16,7 @@ def sao_anagramas(string1 : str, string2 : str) -> bool:
 
     # Observar na tabela ASCII que os caracteres válidos estão entre 33 e 126, inclusos
     for i in range(size1):
-        char_ascii = ord(string1[i])
+        char_ascii = string1[i]
         if char_ascii not in mapeador:
             mapeador[char_ascii] = 1
         else:
@@ -24,7 +24,7 @@ def sao_anagramas(string1 : str, string2 : str) -> bool:
     
     # Para todo caractere lido, reduz um da contagem
     for i in range(size2):
-        char_ascii = ord(string2[i])
+        char_ascii = string2[i]
         if char_ascii not in mapeador:
             mapeador[char_ascii] = -1
         else:
