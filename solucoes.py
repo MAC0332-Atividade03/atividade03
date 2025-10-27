@@ -7,6 +7,9 @@ def limpa_string(string : str) -> str:
     return "".join(map(str.strip, lista_de_termos))
 
 def sao_anagramas(string1 : str, string2 : str) -> bool:
+    if not isinstance(string1, str) or not isinstance(string2, str):
+        return False
+    
     # Passar todos os maiúsculos para minúsculos
     nova_string1 = limpa_string(string1)
     nova_string2 = limpa_string(string2)
