@@ -37,7 +37,7 @@ def sao_anagramas(string1 : str, string2 : str) -> bool:
     
     # Dos caracteres válidos, verifica se o mapeamento é nulo
     for value in mapeador.values():
-        if(value != 0):
+        if value != 0:
             return False
     
     return True
