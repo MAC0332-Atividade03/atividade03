@@ -9,22 +9,25 @@ def cifra_de_cesar(texto, deslocamento):
 def encontrar_maior_palavra(frase):
     if isinstance(frase, str):
         res = ""
-        maxLength = curStart = curLenght = 0
+        curString = []
+        maxLength = curLenght = 0
 
         for i in range(len(frase)):
-            if(frase[i].isalnum()):
+            if frase[i].isalnum() or frase[i] == '-':
+                curString.append(frase[i]) 
                 curLenght += 1
             else:
-                if(frase[i] == ' ' and curLenght > maxLength):
-                    maxLength = curLenght
-                    res = frase[curStart:curStart+maxLength]
+                if frase[i] == ' ':
+                    if curLenght > maxLength:
+                        maxLength = curLenght
+                        res = ''.join(curString)
+                    
+                    curString = []
+                    curLenght = 0
                 
-                curStart = i+1
-                curLenght = 0
-
-        if(curLenght > maxLength):
+        if curLenght > maxLength:
             maxLength = curLenght
-            res = frase[curStart:curStart+maxLength]
+            res = ''.join(curString)
         
         return res
 
